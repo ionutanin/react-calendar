@@ -1,0 +1,36 @@
+.wrapper {
+  max-width: 624px;
+}
+
+.monthName {
+  @apply text-2xl font-bold;
+}
+
+.title {
+  @apply text-lg font-bold mb-4;
+}
+
+.section {
+  @apply p-6 py-4 mb-4;
+
+  .range {
+    @apply flex gap-4;
+  }
+
+  .option {
+    @apply p-4 rounded-lg flex gap-4 cursor-pointer items-start select-none w-48;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+
+    input {
+      @apply mt-1;
+    }
+
+    div {
+      @apply grid;
+    }
+
+    &.activeOption {
+      box-shadow: inset  0 0 0 2px orange;
+    }
+  }
+}

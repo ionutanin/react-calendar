@@ -8,4 +8,36 @@ body {
 
 .rdp-day {
   overflow: visible !important;
+
+  &_disabled {
+    div > div:last-child {
+      display: none;
+    }
+  }
+
+  &_selected {
+    div > div:last-child {
+      color: rgba(white, .7);
+    }
+  }
+}
+
+.swiper-slide {
+  width: auto !important;
+}
+
+.rdp-nav {
+  @apply hidden;
+
+  @media (min-width: 768px) {
+    @apply block;
+  }
+}
+
+.rdp-months {
+  @apply flex-col gap-8 items-center;
+
+  @media (min-width: 768px) {
+    @apply flex-row gap-0;
+  }
 }

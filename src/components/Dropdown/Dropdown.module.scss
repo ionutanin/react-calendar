@@ -1,6 +1,14 @@
 .wrapper {
   @apply absolute top-full left-1/2 -translate-x-1/2 translate-y-1 border border-gray-100 z-10 shadow-2xl;
-  min-width: 592px;
+  @apply w-screen;
+  @apply pt-16;
+
+  max-height: calc(100vh - 66px);
+
+  @media (min-width: 768px) {
+    @apply max-w-none p-0;
+    width: 624px;
+  }
 }
 
 .backdrop {
@@ -9,6 +17,11 @@
 
 .tabs {
   @apply grid grid-cols-2;
+  @apply fixed top-0 left-0 right-0;
+
+  @media (min-width: 768px) {
+    @apply static;
+  }
 
   .tab {
     @apply py-4 px-6 text-gray-700 text-sm font-bold whitespace-nowrap border-b cursor-pointer;

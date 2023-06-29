@@ -1,8 +1,0 @@
-.dayCell {
-    @apply flex relative w-full h-full items-center justify-center;
-}
-
-.price {
-    @apply absolute right-0 left-0 bottom-0 text-green-600 font-semibold text-center translate-y-1;
-    font-size: 10px;
-}

@@ -2,7 +2,7 @@ import React from 'react'
 import {DateRange, DayContentProps, DayPicker, SelectRangeEventHandler} from 'react-day-picker';
 
 import 'react-day-picker/dist/style.css';
-import styles from './RangeDatePicker.module.css';
+import styles from './RangeDatePicker.module.scss';
 
 interface IProps {
     selected?: DateRange
@@ -15,10 +15,10 @@ const RangeDatePicker: React.FC<IProps> = ({ selected, change }) => {
     }
 
     const DayContent = (day: DayContentProps) => {
-        const {date, ...props} = day;
+        const {date} = day;
 
         return (
-            <div {...props} className={styles.dayCell}>
+            <div className={styles.dayCell}>
                 <div>{date.getDate()}</div>
                 <div className={styles.price}>${20 + date.getDate()}</div>
             </div>
@@ -45,7 +45,7 @@ const RangeDatePicker: React.FC<IProps> = ({ selected, change }) => {
                     },
                 ]}
                 defaultMonth={selected?.from}
-                numberOfMonths={2}
+                numberOfMonths={window.innerWidth > 768 ? 2 : 12}
                 pagedNavigation={false}
                 selected={selected}
                 onSelect={handleChange}

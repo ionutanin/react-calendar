@@ -1,0 +1,21 @@
+.dayCell {
+    @apply flex relative w-full h-full items-center justify-center;
+
+    > :first-child {
+        @apply pb-3;
+    }
+}
+
+.price {
+    @apply absolute right-0 left-0 bottom-0 text-green-600 font-semibold text-center;
+    font-size: 10px;
+}
+
+.wrapper {
+    @apply overflow-scroll;
+    max-height: calc(100vh - 66px - 56px - 66px);
+
+    @media (min-width: 768px) {
+        @apply max-h-none overflow-visible;
+    }
+}
