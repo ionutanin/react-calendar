@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useMemo, useState} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {Dropdown} from './components/Dropdown';
+
+import styles from './App.module.scss';
+import {DateRange} from 'react-day-picker';
+
+export const initialDateRangeState: DateRange = {
+    from: undefined,
+    to: undefined,
+}
+
+const App: React.FC = () => {
+    const [selected, setSelected] = useState(initialDateRangeState)
+    const [dropdown, setDropdown] = useState(false)
+
+    const toggleDropdown = () => {
+        setDropdown(!dropdown)
+    }
+
+    const applyDates = (dates: DateRange) => {
+        toggleDropdown()
+        setSelected(dates)
+        console.log('dates', dates)
+    }
+
+    const formattedDates = useMemo(() => {
+        if (!selected.from || !selected.to) {
+            return 'Select dates'
+        }
+
+        const from = selected.from.toLocaleDateString()
+        const to = selected.to.toLocaleDateString()
+
+        return `${from} - ${to}`
+    }, [selected]);
+
+    return (
+        <div className={styles.wrapper}>
+            <div className={styles.picker} onClick={toggleDropdown}>{formattedDates}</div>
+            {dropdown && <Dropdown close={toggleDropdown} apply={applyDates} selected={selected} />}
+        </div>
+    );
 }
 
 export default App;

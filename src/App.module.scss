@@ -1,0 +1,9 @@
+.wrapper {
+  @apply w-64 m-auto mt-4 relative;
+}
+
+.picker {
+  @apply cursor-pointer;
+  @apply border border-gray-300 rounded-md;
+  @apply p-2 px-4 text-gray-700 text-xl font-bold;
+}
